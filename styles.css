@@ -11,7 +11,11 @@
     --color-primary: #4968F8;
     /* Zurich Blue - Tech/Electric */
     --color-accent: #FA961E;
-    /* Spritz Orange - Lifestyle */
+    /* Spritz Orange - Lifestyle/Agilité */
+    --color-green: #4A7C59;
+    /* Forest Green - Technique */
+    --color-skyblue: #3B9FD8;
+    /* Sky Blue - Humour */
     --color-dark: #1F1F1F;
     /* Asphalt - Fond principal */
     --color-light: #F4F1EA;
@@ -30,8 +34,8 @@
     --spacing-xl: 8rem;
 
     /* Glassmorphism */
-    --glass-bg: rgba(31, 31, 31, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(31, 31, 31, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.15);
     --glass-blur: 20px;
 
     /* Shadows */
@@ -195,7 +199,7 @@ p {
    ================================ */
 .section--transition {
     background: var(--color-dark);
-    min-height: 150vh;
+    min-height: 100vh;
 }
 
 .transition-text {
@@ -205,27 +209,29 @@ p {
 }
 
 /* ================================
-   PHASE 2: SLALOM
+   PHASE 2: SLALOM - BASE STYLES
    ================================ */
 .section--slalom {
     background: var(--color-dark-gradient);
     color: var(--color-light);
-    min-height: 200vh;
+    min-height: 150vh;
+    position: relative;
 }
 
-/* Road Background */
+/* Road Background - Present on ALL pillars - FULL HEIGHT */
 .road-background {
     position: absolute;
-    top: 0;
+    top: -50vh;
+    bottom: -50vh;
     left: 50%;
     transform: translateX(-50%);
     width: 400px;
-    height: 300%;
     background: repeating-linear-gradient(to bottom,
             #333 0px,
             #333 50px,
             #444 50px,
             #444 100px);
+    z-index: 1;
 }
 
 .road-background::before {
@@ -243,69 +249,24 @@ p {
             transparent 60px);
 }
 
-/* Obstacles */
-.obstacle {
-    position: absolute;
-    width: 150px;
-    height: 100px;
-    background: rgba(100, 100, 100, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-light);
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    text-align: center;
-    opacity: 0;
-}
-
-.obstacle--left {
-    left: 5%;
-}
-
-.obstacle--right {
-    right: 5%;
-}
-
-.obstacle-1 {
-    top: 20%;
-}
-
-.obstacle-2 {
-    top: 35%;
-}
-
-.obstacle-3 {
-    top: 50%;
-}
-
-.obstacle-4 {
-    top: 65%;
-}
-
-/* Pillar Content */
+/* ================================
+   PILLAR CONTENT - VISIBLE BY DEFAULT
+   ================================ */
 .pillar-content {
     position: relative;
     z-index: 50;
-    max-width: 500px;
-    text-align: center;
+    max-width: 450px;
+    padding: var(--spacing-md);
     color: var(--color-light);
-}
-
-.pillar-content--left {
-    align-self: flex-start;
-    margin-left: 5%;
-    text-align: left;
+    text-align: center;
 }
 
 .pillar-number {
     font-family: var(--font-heading);
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
     color: var(--color-primary);
-    opacity: 0.3;
+    opacity: 0.4;
     display: block;
     line-height: 1;
 }
@@ -313,6 +274,7 @@ p {
 .pillar-title {
     color: var(--color-light);
     margin-bottom: var(--spacing-xs);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .pillar-subtitle {
@@ -320,75 +282,124 @@ p {
     font-family: var(--font-heading);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 0.1em;
     margin-bottom: var(--spacing-sm);
 }
 
 .pillar-description {
-    color: rgba(244, 241, 234, 0.8);
+    color: rgba(244, 241, 234, 0.9);
+    font-size: 1rem;
 }
 
 /* ================================
-   PILIER 2: TECHNIQUE (Blueprint)
+   PILIER 1: AGILITÉ
+   ================================ */
+.section--agilite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pillar-centered {
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 0 60px rgba(250, 150, 30, 0.3);
+}
+
+/* ================================
+   PILIER 2: TECHNIQUE
    ================================ */
 .section--technique {
-    min-height: 150vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.blueprint-grid {
+/* SVG Pointers avec courbes de Bézier */
+.tech-pointers-svg {
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(73, 104, 248, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(73, 104, 248, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55%;
+    height: 70%;
+    z-index: 30;
+}
+
+.tech-pointers-svg .pointer {
     opacity: 0;
 }
 
-.tech-pointers {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.pointer {
-    opacity: 0;
-}
-
-.pointer-text {
+.tech-pointers-svg .pointer-text {
     font-family: var(--font-heading);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Texte du pilier à DROITE */
+.pillar-right {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    border: 2px solid var(--color-green);
+    box-shadow: 0 0 60px rgba(74, 124, 89, 0.3);
+}
+
+/* Couleurs vertes pour le pilier Technique */
+#pillar-technique .pillar-number {
+    color: var(--color-green);
+}
+
+#pillar-technique .pillar-subtitle {
+    color: var(--color-green);
 }
 
 /* ================================
-   PILIER 3: HUMOUR (Giant Element)
+   PILIER 3: HUMOUR
    ================================ */
 .section--humour {
-    min-height: 150vh;
-    flex-direction: row;
-    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* SUV Géant - RETOURNÉ pour aller de gauche à droite */
 .giant-element {
     position: absolute;
-    right: -5%;
+    left: -60%;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+    width: 50vw;
+    max-width: 700px;
+    height: auto;
+    object-fit: contain;
+    z-index: 20;
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+    opacity: 1;
+}
+
+/* Texte du pilier à GAUCHE */
+.pillar-left {
+    position: absolute;
+    left: 5%;
     top: 50%;
     transform: translateY(-50%);
-    width: 60vw;
-    height: auto;
-    max-height: 80vh;
-    object-fit: contain;
-    opacity: 0;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+    text-align: left;
+    border: 2px solid var(--color-skyblue);
+    box-shadow: 0 0 60px rgba(59, 159, 216, 0.3);
+}
+
+/* Couleurs bleues pour le pilier Humour */
+#pillar-humour .pillar-number {
+    color: var(--color-skyblue);
+}
+
+#pillar-humour .pillar-subtitle {
+    color: var(--color-skyblue);
 }
 
 /* ================================
@@ -488,8 +499,9 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-light);
-    font-size: 0.6rem;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
     text-align: center;
     font-family: var(--font-heading);
 }
@@ -576,11 +588,11 @@ p {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    animation: marquee-up 20s linear infinite;
+    animation: marquee-up 30s linear infinite;
 }
 
 .tweet-column--2 {
-    animation: marquee-down 25s linear infinite;
+    animation: marquee-down 35s linear infinite;
 }
 
 @keyframes marquee-up {
@@ -603,37 +615,133 @@ p {
     }
 }
 
-.tweet {
-    width: 280px;
-    padding: var(--spacing-sm);
+/* Nouveau style Tweet Card */
+.tweet-card {
+    width: 300px;
+    padding: var(--spacing-md);
     flex-shrink: 0;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(var(--glass-blur));
+    transition: var(--transition-smooth);
+}
+
+.tweet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
 }
 
 .tweet-header {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-xs);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
 }
 
 .tweet-avatar {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-primary) 0%, #2a4ad4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
 }
 
-.tweet-author {
+/* Gradients pour les avatars */
+.gradient-blue {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-green {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.gradient-purple {
+    background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+}
+
+.gradient-pink {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-cyan {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.gradient-orange {
+    background: linear-gradient(135deg, var(--color-accent) 0%, #d97800 100%);
+}
+
+.tweet-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-name {
     font-family: var(--font-heading);
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-light);
+    font-size: 0.95rem;
+}
+
+.tweet-handle {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.tweet-content {
+    color: var(--color-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hashtag {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.tweet-footer {
+    display: flex;
+    gap: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.tweet-footer span {
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.tweet-footer span:hover {
+    color: var(--color-light);
+}
+
+/* Video Placeholder amélioré */
+.video-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.video-label {
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.85rem;
 }
 
-.tweet p {
-    color: var(--color-light);
-    font-size: 0.9rem;
-    line-height: 1.4;
+/* Activation Subtitle */
+.activation-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    margin-top: var(--spacing-sm);
 }
 
 /* ================================
@@ -700,7 +808,24 @@ p {
 
     .giant-element {
         width: 70vw;
-        right: -20%;
+    }
+
+    .pillar-right,
+    .pillar-left {
+        position: relative;
+        right: auto;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-top: var(--spacing-lg);
+    }
+
+    .tech-pointers-container {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: var(--spacing-lg);
     }
 }
 
@@ -719,12 +844,6 @@ p {
         height: 220px;
     }
 
-    .obstacle {
-        width: 100px;
-        height: 70px;
-        font-size: 0.6rem;
-    }
-
     .iphone-frame {
         width: 280px;
         height: 570px;
@@ -732,13 +851,6 @@ p {
 
     .giant-element {
         width: 80vw;
-        height: 50vh;
-    }
-
-    .pillar-content--left {
-        margin-left: 0;
-        text-align: center;
-        align-self: center;
     }
 }
 
@@ -746,7 +858,6 @@ p {
     .microlino-car {
         width: 150px;
         height: 200px;
-        font-size: 0.75rem;
     }
 
     .road-background {
@@ -754,7 +865,7 @@ p {
     }
 
     .pillar-number {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     .activation-content {

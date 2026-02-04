@@ -75,145 +75,184 @@ const transitionTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: transitionSection,
         start: "top 80%",
-        end: "top 20%",
+        end: "bottom center",
         scrub: 1,
     }
 });
 
-// Background color transition (handled via CSS classes, but we fade Microlino in)
+// Microlino fades in during transition
 transitionTimeline
     .to(microlino, {
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
         ease: "power2.out"
     });
 
 // ================================
 // PHASE 2A: PILIER AGILITÉ
-// Obstacles pass by the Microlino
+// L'esquive commence ICI (après transition)
 // ================================
 
-const obstacles = document.querySelectorAll('.obstacle');
-
-// Animate each obstacle
-obstacles.forEach((obstacle, index) => {
-    const isLeft = obstacle.classList.contains('obstacle--left');
-    const startX = isLeft ? -200 : 200;
-    
-    gsap.set(obstacle, { x: startX, opacity: 0 });
-    
-    gsap.to(obstacle, {
-        x: 0,
-        opacity: 1,
-        scrollTrigger: {
-            trigger: agiliteSection,
-            start: `${20 + (index * 15)}% center`,
-            end: `${35 + (index * 15)}% center`,
-            scrub: 1,
-        }
-    });
-    
-    // Fade out after passing
-    gsap.to(obstacle, {
-        x: isLeft ? 200 : -200,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: agiliteSection,
-            start: `${40 + (index * 15)}% center`,
-            end: `${55 + (index * 15)}% center`,
-            scrub: 1,
-        }
-    });
-});
-
-// Agilité pillar content animation
-gsap.from('#agilite .pillar-content', {
-    y: 100,
+// Animation du texte du pilier (déjà visible, on ajoute juste un effet d'entrée)
+gsap.from('#pillar-agilite', {
+    scale: 0.8,
     opacity: 0,
     scrollTrigger: {
         trigger: agiliteSection,
-        start: "60% center",
-        end: "80% center",
+        start: "top 80%",
+        end: "top 40%",
         scrub: 1,
     }
 });
+
+// La Microlino esquive le texte par la GAUCHE (section Agilité uniquement)
+const slalomTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: agiliteSection,
+        start: "top 60%",
+        end: "bottom 60%",  // Se termine AVANT la section suivante
+        scrub: 1,
+    }
+});
+
+slalomTimeline
+    // Écart vers la GAUCHE pour éviter le texte central
+    .to(microlino, {
+        x: -200,
+        rotation: -8,
+        duration: 1.5,
+        ease: "power2.inOut"
+    })
+    // Retour au centre (pour être prêt pour la section Technique et Humour)
+    .to(microlino, {
+        x: 0,
+        rotation: 0,
+        duration: 1.5,
+        ease: "power2.inOut"
+    });
+
 
 // ================================
 // PHASE 2B: PILIER TECHNIQUE
-// Blueprint grid + SVG pointers
+// La voiture reste au centre, les pointeurs apparaissent
 // ================================
 
-const blueprintGrid = document.querySelector('.blueprint-grid');
-const pointers = document.querySelectorAll('.pointer');
-
-// Blueprint grid fade in
-gsap.to(blueprintGrid, {
-    opacity: 1,
+// Timeline avec PIN pour la section Technique
+// La Microlino reste en place pendant l'affichage des flèches
+const techniqueTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: techniqueSection,
-        start: "top center",
-        end: "30% center",
+        start: "top -25%",     // Voiture descend ~250px avant de se figer
+        end: "+=200%",      // La section reste épinglée longtemps
         scrub: 1,
+        pin: true,
+        anticipatePin: 1,
     }
 });
 
-// Animate each pointer sequentially
-pointers.forEach((pointer, index) => {
-    gsap.to(pointer, {
-        opacity: 1,
-        scrollTrigger: {
-            trigger: techniqueSection,
-            start: `${20 + (index * 15)}% center`,
-            end: `${35 + (index * 15)}% center`,
-            scrub: 1,
-        }
-    });
-});
-
-// Technique pillar content animation
-gsap.from('#technique .pillar-content', {
-    y: 100,
+// Animation du texte à droite (dans la timeline)
+techniqueTimeline.from('#pillar-technique', {
+    x: 100,
     opacity: 0,
-    scrollTrigger: {
-        trigger: techniqueSection,
-        start: "50% center",
-        end: "70% center",
-        scrub: 1,
+    duration: 1,
+}, 0);
+
+// Animation des pointeurs SVG (apparition séquentielle avec tracé)
+const svgPointers = document.querySelectorAll('.tech-pointers-svg .pointer');
+svgPointers.forEach((pointer, index) => {
+    // Fade in du groupe entier
+    techniqueTimeline.to(pointer, {
+        opacity: 1,
+        duration: 1,
+    }, 0.5 + (index * 0.8));  // Décalage entre chaque pointeur
+
+    // Animation du tracé de la courbe (draw effect)
+    const path = pointer.querySelector('path');
+    if (path) {
+        const pathLength = path.getTotalLength();
+        gsap.set(path, {
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength
+        });
+        techniqueTimeline.to(path, {
+            strokeDashoffset: 0,
+            duration: 1,
+        }, 0.5 + (index * 0.8));
     }
 });
+
+// Pause après l'affichage des flèches (la voiture reste en place un moment)
+techniqueTimeline.to({}, { duration: 1 });
+
 
 // ================================
 // PHASE 2C: PILIER HUMOUR
-// Giant element appears
+// Le SUV arrive de la gauche et s'envole en tourbillon
 // ================================
 
-const giantElement = document.querySelector('.giant-element');
+const giantSuv = document.getElementById('giant-suv');
 
-// Giant element slides in from right
-gsap.to(giantElement, {
-    opacity: 1,
-    x: 0,
-    scrollTrigger: {
-        trigger: humourSection,
-        start: "top center",
-        end: "40% center",
-        scrub: 1,
-    }
-});
-
-gsap.set(giantElement, { x: 200 });
-
-// Humour pillar content animation
-gsap.from('#humour .pillar-content', {
+// Animation du texte - apparaît dès l'entrée
+gsap.from('#pillar-humour', {
     x: -100,
     opacity: 0,
     scrollTrigger: {
         trigger: humourSection,
-        start: "30% center",
-        end: "50% center",
+        start: "top 80%",
+        end: "top 50%",
         scrub: 1,
     }
 });
+
+// Animation du SUV avec PIN de la section
+// La section est "gelée" pendant que le SUV fait son animation
+const suvTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: humourSection,
+        start: "top -25%",     // Voiture descend ~250px avant de se figer
+        end: "+=150%",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+    }
+});
+
+suvTimeline
+    // 1. Le SUV arrive de la gauche vers la Microlino
+    .to(giantSuv, {
+        left: '38%',
+        duration: 2.5,
+        ease: "none"
+    })
+    // 2. La Microlino fait un BOND d'attaque vers le SUV ! 💥
+    .to(microlino, {
+        x: -80,           // Bond vers la gauche (vers le SUV)
+        y: -30,           // Petit saut en l'air
+        rotation: -5,     // Légère inclinaison agressive
+        scale: 1.1,       // Grossit un peu (effet de puissance)
+        duration: 0.3,
+        ease: "power2.out"
+    })
+    // 3. Le SUV s'envole sous l'impact ! 🚀
+    .to(giantSuv, {
+        left: '120%',
+        top: '-50%',
+        rotation: 900,    // Tourbillon violent
+        scale: 0.15,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out"
+    }, "<")  // "<" = commence en même temps que l'animation précédente
+    // 4. La Microlino revient à sa position normale (satisfaite 😎)
+    .to(microlino, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        duration: 0.5,
+        ease: "back.out(1.5)"
+    }, "-=0.5");  // Commence un peu avant la fin
+
 
 // ================================
 // PHASE 3: ACCELERATION
@@ -330,7 +369,7 @@ if (ctaButton) {
             duration: 0.3
         });
     });
-    
+
     ctaButton.addEventListener('mouseleave', () => {
         gsap.to(ctaButton, {
             boxShadow: '0 0 40px rgba(250, 150, 30, 0.3)',
@@ -360,18 +399,17 @@ document.querySelectorAll('.glass-card').forEach(card => {
 // PARALLAX ROAD EFFECT
 // ================================
 
-const roadBackground = document.querySelector('.road-background');
-if (roadBackground) {
-    gsap.to(roadBackground, {
-        y: -500,
+document.querySelectorAll('.road-background').forEach(road => {
+    gsap.to(road, {
+        y: -200,
         scrollTrigger: {
-            trigger: agiliteSection,
+            trigger: road.parentElement,
             start: "top bottom",
             end: "bottom top",
             scrub: 1,
         }
     });
-}
+});
 
 // ================================
 // DEBUG MODE (uncomment to enable)

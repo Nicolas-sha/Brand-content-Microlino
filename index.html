@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 
 <body>
@@ -60,21 +60,8 @@
     <section class="section section--slalom section--agilite" id="agilite">
         <div class="road-background"></div>
 
-        <!-- Obstacles -->
-        <div class="obstacle obstacle--left obstacle-1">
-            <span>OBSTACLE: VOITURE</span>
-        </div>
-        <div class="obstacle obstacle--right obstacle-2">
-            <span>OBSTACLE: MUR</span>
-        </div>
-        <div class="obstacle obstacle--left obstacle-3">
-            <span>OBSTACLE: CAMION</span>
-        </div>
-        <div class="obstacle obstacle--right obstacle-4">
-            <span>OBSTACLE: BUS</span>
-        </div>
-
-        <div class="pillar-content glass-card">
+        <!-- Le contenu du pilier est l'obstacle central sur la route -->
+        <div class="pillar-content glass-card pillar-centered" id="pillar-agilite">
             <span class="pillar-number">01</span>
             <h2 class="pillar-title">L'AGILITÉ</h2>
             <p class="pillar-subtitle">Cross-parking & Gain de temps</p>
@@ -85,31 +72,42 @@
 
     <!-- PILIER 2 : TECHNIQUE -->
     <section class="section section--slalom section--technique" id="technique">
-        <div class="blueprint-grid"></div>
+        <!-- La route continue -->
+        <div class="road-background"></div>
 
-        <!-- SVG Pointers -->
-        <svg class="tech-pointers" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet">
-            <!-- Pointer 1: Chassis -->
+        <!-- SVG avec courbes de Bézier - COULEUR VERTE pour Technique -->
+        <svg class="tech-pointers-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+            <!-- Pointer 1: Chassis (pointe vers le TOIT de la voiture) -->
             <g class="pointer pointer-1">
-                <line x1="600" y1="400" x2="200" y2="200" stroke="#4968F8" stroke-width="2" />
-                <circle cx="200" cy="200" r="8" fill="#4968F8" />
-                <text x="100" y="180" fill="#F4F1EA" class="pointer-text">Chassis Monocoque</text>
+                <path d="M 50 200 Q 500 200 950 270" stroke="#4A7C59" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                <circle cx="950" cy="270" r="8" fill="#4A7C59" />
+                <rect x="10" y="180" width="180" height="40" rx="8" fill="rgba(74, 124, 89, 0.2)" stroke="#4A7C59" />
+                <text x="100" y="207" fill="#F4F1EA" text-anchor="middle" class="pointer-text">CHASSIS MONOCOQUE</text>
             </g>
-            <!-- Pointer 2: Batterie -->
+
+            <!-- Pointer 2: Batterie (pointe vers le MILIEU de la voiture) -->
             <g class="pointer pointer-2">
-                <line x1="600" y1="450" x2="200" y2="500" stroke="#4968F8" stroke-width="2" />
-                <circle cx="200" cy="500" r="8" fill="#4968F8" />
-                <text x="50" y="530" fill="#F4F1EA" class="pointer-text">Batterie High-Density</text>
+                <path d="M 50 300 Q 500 300 950 310" stroke="#4A7C59" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                <circle cx="950" cy="310" r="8" fill="#4A7C59" />
+                <rect x="10" y="280" width="200" height="40" rx="8" fill="rgba(74, 124, 89, 0.2)" stroke="#4A7C59" />
+                <text x="110" y="307" fill="#F4F1EA" text-anchor="middle" class="pointer-text">BATTERIE
+                    HIGH-DENSITY</text>
             </g>
-            <!-- Pointer 3: Coffre -->
+
+            <!-- Pointer 3: Coffre (pointe vers le BAS de la voiture) -->
             <g class="pointer pointer-3">
-                <line x1="600" y1="350" x2="1000" y2="250" stroke="#4968F8" stroke-width="2" />
-                <circle cx="1000" cy="250" r="8" fill="#4968F8" />
-                <text x="920" y="230" fill="#F4F1EA" class="pointer-text">230L Coffre</text>
+                <path d="M 50 400 Q 500 400 950 350" stroke="#4A7C59" stroke-width="3" fill="none"
+                    stroke-linecap="round" />
+                <circle cx="950" cy="350" r="8" fill="#4A7C59" />
+                <rect x="10" y="380" width="140" height="40" rx="8" fill="rgba(74, 124, 89, 0.2)" stroke="#4A7C59" />
+                <text x="80" y="407" fill="#F4F1EA" text-anchor="middle" class="pointer-text">230L COFFRE</text>
             </g>
         </svg>
 
-        <div class="pillar-content glass-card">
+        <!-- ZONE DROITE : Texte -->
+        <div class="pillar-content glass-card pillar-right" id="pillar-technique">
             <span class="pillar-number">02</span>
             <h2 class="pillar-title">LA TECHNIQUE</h2>
             <p class="pillar-subtitle">L'ingénierie Suisse</p>
@@ -120,20 +118,23 @@
 
     <!-- PILIER 3 : HUMOUR -->
     <section class="section section--slalom section--humour" id="humour">
-        <img src="pngtree-car-suv-transparent-picture-png-image_15401289-removebg-preview.png" alt="SUV Géant"
-            class="giant-element">
+        <div class="road-background"></div>
 
-        <div class="pillar-content glass-card pillar-content--left">
+        <!-- Le SUV Géant qui arrive de la gauche -->
+        <img src="pngtree-car-suv-transparent-picture-png-image_15401289-removebg-preview.png" alt="SUV Géant"
+            class="giant-element" id="giant-suv">
+
+        <div class="pillar-content glass-card pillar-left" id="pillar-humour">
             <span class="pillar-number">03</span>
             <h2 class="pillar-title">L'HUMOUR</h2>
             <p class="pillar-subtitle">David contre Goliath</p>
-            <p class="pillar-description">Oui, on est petit. Et on en est fier. Parce que dans la jungle urbaine,
-                l'agilité bat toujours la force brute.</p>
+            <p class="pillar-description">Oui, on est petit. Et alors ? Quand le géant s'approche, c'est la
+                Microlino qui gagne le duel du style.</p>
         </div>
     </section>
 
     <!-- ================================
-         PHASE 3 : L'ACTIVATION (LE FINAL)
+         PHASE 3 : L'ACCELERATION
          ================================ -->
     <section class="section section--acceleration" id="acceleration">
         <div class="acceleration-text glass-card">
@@ -141,9 +142,13 @@
         </div>
     </section>
 
+    <!-- ================================
+         PHASE 3 : L'ACTIVATION
+         ================================ -->
     <section class="section section--activation" id="activation">
         <div class="activation-header">
             <h2 class="activation-title">L'ACTIVATION <span class="text-accent">#MICROFLEX</span></h2>
+            <p class="activation-subtitle">Quand les créateurs urbains deviennent ambassadeurs</p>
         </div>
 
         <div class="activation-content">
@@ -153,8 +158,8 @@
                     <div class="iphone-notch"></div>
                     <div class="iphone-screen">
                         <div class="influencer-profile">
-                            <div class="profile-avatar">
-                                <span>IMG: LEO_DUFF_AVATAR</span>
+                            <div class="profile-avatar gradient-orange">
+                                <span>LD</span>
                             </div>
                             <div class="profile-info">
                                 <h3 class="profile-name">LÉO DUFF</h3>
@@ -162,13 +167,19 @@
                             </div>
                         </div>
                         <div class="video-thumbnail">
-                            <span>IMG: VIDEO_THUMBNAIL</span>
-                            <div class="play-button">▶</div>
+                            <div class="video-placeholder">
+                                <div class="play-button">
+                                    <svg viewBox="0 0 24 24" fill="white" width="40" height="40">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                                <p class="video-label">Vidéo à venir</p>
+                            </div>
                         </div>
                         <div class="stats-bar">
                             <div class="stat">
                                 <span class="stat-icon">👁️</span>
-                                <span class="stat-value" id="viewCounter">0</span>
+                                <span class="stat-value" id="viewCounter">950K</span>
                             </div>
                             <div class="stat">
                                 <span class="stat-icon">❤️</span>
@@ -183,81 +194,108 @@
                 </div>
             </div>
 
-            <!-- RIGHT: Tweet Wall -->
+            <!-- RIGHT: Tweet Wall avec design amélioré -->
             <div class="tweet-wall">
                 <div class="tweet-marquee">
                     <div class="tweet-column tweet-column--1">
-                        <div class="tweet glass-card">
+                        <div class="tweet-card">
                             <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@urbandriver</span>
+                                <div class="tweet-avatar gradient-blue">M</div>
+                                <div class="tweet-user">
+                                    <span class="tweet-name">Marie L.</span>
+                                    <span class="tweet-handle">@marielux</span>
+                                </div>
                             </div>
-                            <p>Cette Microlino est INCROYABLE pour Paris 🔥 #MicroFlex</p>
+                            <p class="tweet-content">Cette Microlino est INCROYABLE pour Paris 🔥 Fini les galères de
+                                stationnement ! <span class="hashtag">#MicroFlex</span></p>
+                            <div class="tweet-footer">
+                                <span>❤️ 234</span>
+                                <span>💬 18</span>
+                                <span>🔄 45</span>
+                            </div>
                         </div>
-                        <div class="tweet glass-card">
+                        <div class="tweet-card">
                             <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@techreview</span>
+                                <div class="tweet-avatar gradient-green">T</div>
+                                <div class="tweet-user">
+                                    <span class="tweet-name">Tech Review</span>
+                                    <span class="tweet-handle">@techreview_fr</span>
+                                </div>
                             </div>
-                            <p>Le futur de la mobilité urbaine est là. Compact, électrique, stylé. #MicroFlex</p>
+                            <p class="tweet-content">Le futur de la mobilité urbaine est là. Compact, électrique, et un
+                                design qui fait tourner les têtes 🚗⚡ <span class="hashtag">#MicroFlex</span></p>
+                            <div class="tweet-footer">
+                                <span>❤️ 1.2K</span>
+                                <span>💬 89</span>
+                                <span>🔄 312</span>
+                            </div>
                         </div>
-                        <div class="tweet glass-card">
+                        <div class="tweet-card">
                             <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@mobilityexpert</span>
+                                <div class="tweet-avatar gradient-purple">A</div>
+                                <div class="tweet-user">
+                                    <span class="tweet-name">Alex Mobility</span>
+                                    <span class="tweet-handle">@mobilityexpert</span>
+                                </div>
                             </div>
-                            <p>Enfin une vraie alternative à la voiture polluante ! #MicroFlex #Mobility</p>
-                        </div>
-                        <div class="tweet glass-card">
-                            <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@greenliving</span>
+                            <p class="tweet-content">Enfin une vraie alternative à la voiture polluante ! La révolution
+                                commence maintenant 🌱 <span class="hashtag">#MicroFlex</span> <span
+                                    class="hashtag">#Mobility</span></p>
+                            <div class="tweet-footer">
+                                <span>❤️ 567</span>
+                                <span>💬 34</span>
+                                <span>🔄 128</span>
                             </div>
-                            <p>J'ai craqué. Commande passée ! 🚗💚 #MicroFlex</p>
-                        </div>
-                        <div class="tweet glass-card">
-                            <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@citylife</span>
-                            </div>
-                            <p>Les regards dans la rue quand je passe... Collector ! 😎 #MicroFlex</p>
                         </div>
                     </div>
                     <div class="tweet-column tweet-column--2">
-                        <div class="tweet glass-card">
+                        <div class="tweet-card">
                             <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@designlover</span>
+                                <div class="tweet-avatar gradient-pink">S</div>
+                                <div class="tweet-user">
+                                    <span class="tweet-name">Sophie Design</span>
+                                    <span class="tweet-handle">@sophiedesign</span>
+                                </div>
                             </div>
-                            <p>Le design rétro-futuriste 😍 Je suis fan ! #MicroFlex</p>
+                            <p class="tweet-content">Le design rétro-futuriste 😍 On dirait une Fiat 500 du futur ! Je
+                                suis complètement fan <span class="hashtag">#MicroFlex</span></p>
+                            <div class="tweet-footer">
+                                <span>❤️ 892</span>
+                                <span>💬 67</span>
+                                <span>🔄 234</span>
+                            </div>
                         </div>
-                        <div class="tweet glass-card">
+                        <div class="tweet-card">
                             <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@ecofriendly</span>
+                                <div class="tweet-avatar gradient-cyan">E</div>
+                                <div class="tweet-user">
+                                    <span class="tweet-name">EcoWheels</span>
+                                    <span class="tweet-handle">@ecowheels_</span>
+                                </div>
                             </div>
-                            <p>200km d'autonomie en ville = liberté totale ⚡ #MicroFlex</p>
+                            <p class="tweet-content">200km d'autonomie en ville = liberté totale ⚡ Plus besoin de
+                                stresser pour la batterie <span class="hashtag">#MicroFlex</span></p>
+                            <div class="tweet-footer">
+                                <span>❤️ 445</span>
+                                <span>💬 28</span>
+                                <span>🔄 89</span>
+                            </div>
                         </div>
-                        <div class="tweet glass-card">
+                        <div class="tweet-card">
                             <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@parkingmaster</span>
+                                <div class="tweet-avatar gradient-orange">P</div>
+                                <div class="tweet-user">
+                                    <span class="tweet-name">Paris Driver</span>
+                                    <span class="tweet-handle">@parkingmaster</span>
+                                </div>
                             </div>
-                            <p>Je me gare PARTOUT. Plus jamais de galère 🅿️ #MicroFlex</p>
-                        </div>
-                        <div class="tweet glass-card">
-                            <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@influencerlife</span>
+                            <p class="tweet-content">Je me gare PARTOUT. Littéralement. Plus jamais de galère 🅿️ Game
+                                changer total <span class="hashtag">#MicroFlex</span></p>
+                            <div class="tweet-footer">
+                                <span>❤️ 1.5K</span>
+                                <span>💬 156</span>
+                                <span>🔄 423</span>
                             </div>
-                            <p>Léo Duff a tout compris. La Microlino c'est le game changer 🎯 #MicroFlex</p>
-                        </div>
-                        <div class="tweet glass-card">
-                            <div class="tweet-header">
-                                <div class="tweet-avatar"></div>
-                                <span class="tweet-author">@swissmade</span>
-                            </div>
-                            <p>Qualité Suisse, design Italien, esprit French. Parfait ! 🇨🇭🇮🇹🇫🇷 #MicroFlex</p>
                         </div>
                     </div>
                 </div>
@@ -276,7 +314,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 </body>
 
 </html>
