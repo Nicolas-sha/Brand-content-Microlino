@@ -89,6 +89,101 @@ transitionTimeline
     });
 
 // ================================
+// CONTEXT STRATÉGIQUE ANIMATIONS
+// ================================
+
+// Title animation
+gsap.from('.section--context .section-title', {
+    y: 50,
+    opacity: 0,
+    scrollTrigger: {
+        trigger: '#context',
+        start: "top 80%",
+        end: "top 50%",
+        scrub: 1,
+    }
+});
+
+// Cards stagger animation
+gsap.from('.context-card', {
+    y: 80,
+    opacity: 0,
+    stagger: 0.2,
+    scrollTrigger: {
+        trigger: '.context-grid',
+        start: "top 80%",
+        end: "top 40%",
+        scrub: 1,
+    }
+});
+
+// ================================
+// MISSION & VISION ANIMATIONS
+// ================================
+
+gsap.from('.mission-box', {
+    x: -100,
+    opacity: 0,
+    scrollTrigger: {
+        trigger: '#mission',
+        start: "top 70%",
+        end: "top 40%",
+        scrub: 1,
+    }
+});
+
+gsap.from('.vision-box', {
+    x: 100,
+    opacity: 0,
+    scrollTrigger: {
+        trigger: '#mission',
+        start: "top 70%",
+        end: "top 40%",
+        scrub: 1,
+    }
+});
+
+gsap.from('.territoire-badge', {
+    y: 30,
+    opacity: 0,
+    scrollTrigger: {
+        trigger: '.territoire-badge',
+        start: "top 90%",
+        end: "top 70%",
+        scrub: 1,
+    }
+});
+
+// ================================
+// VALEURS ANIMATIONS
+// ================================
+
+gsap.from('.section--valeurs .section-title', {
+    y: 50,
+    opacity: 0,
+    scrollTrigger: {
+        trigger: '#valeurs',
+        start: "top 90%",
+        end: "top 60%",
+        scrub: 1,
+    }
+});
+
+// Animation des cartes valeurs - départ visible
+gsap.set('.valeur-card', { opacity: 1, y: 0 }); // Assure qu'elles sont visibles par défaut
+gsap.from('.valeur-card', {
+    y: 50,
+    opacity: 0,
+    stagger: 0.2,
+    scrollTrigger: {
+        trigger: '.valeurs-grid',
+        start: "top 95%",
+        end: "top 60%",
+        scrub: 1,
+    }
+});
+
+// ================================
 // PHASE 2A: PILIER AGILITÉ
 // L'esquive commence ICI (après transition)
 // ================================

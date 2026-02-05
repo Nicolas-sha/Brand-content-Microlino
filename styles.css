@@ -209,6 +209,276 @@ p {
 }
 
 /* ================================
+   CONTEXT STRATÉGIQUE
+   ================================ */
+.section--context {
+    background: var(--color-dark-gradient);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 60;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--color-light);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.context-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.context-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-glow-accent);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.context-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.context-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.context-card li {
+    color: var(--color-light);
+    font-size: 1.1rem;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.context-card li:last-child {
+    border-bottom: none;
+}
+
+/* ================================
+   MISSION & VISION
+   ================================ */
+.section--mission {
+    background: var(--color-dark);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 60;
+}
+
+.mission-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    width: 100%;
+}
+
+.mission-box,
+.vision-box {
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.mission-box:hover,
+.vision-box:hover {
+    transform: scale(1.02);
+}
+
+.mission-box {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-glow-accent);
+}
+
+.vision-box {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.mission-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.mission-box h3,
+.vision-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+}
+
+.mission-box h3 {
+    color: var(--color-accent);
+}
+
+.vision-box h3 {
+    color: var(--color-primary);
+}
+
+.mission-box p,
+.vision-box p {
+    color: var(--color-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.mission-highlight {
+    font-weight: 700;
+    font-size: 1.3rem !important;
+    color: var(--color-accent) !important;
+    margin-top: var(--spacing-sm);
+}
+
+.vision-keywords {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.keyword {
+    background: rgba(73, 104, 248, 0.2);
+    border: 1px solid var(--color-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.territoire-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.territoire-label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+}
+
+.territoire-value {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--color-light);
+    font-size: 1.5rem;
+}
+
+/* ================================
+   VALEURS
+   ================================ */
+.section--valeurs {
+    background: var(--color-dark-gradient);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    padding-top: calc(var(--spacing-xl) * 2);
+    margin-top: var(--spacing-xl);
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 60;
+}
+
+.valeurs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 900px;
+    width: 100%;
+}
+
+.valeur-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: var(--transition-smooth);
+    position: relative;
+    z-index: 70;
+}
+
+.valeur-card:hover {
+    transform: translateY(-8px);
+}
+
+#valeur-audace {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 40px rgba(250, 150, 30, 0.2);
+}
+
+#valeur-transparence {
+    border-color: #E53935;
+    box-shadow: 0 0 40px rgba(229, 57, 53, 0.2);
+}
+
+.valeur-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.valeur-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.valeur-archetype {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+}
+
+.valeur-card p {
+    color: rgba(244, 241, 234, 0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ================================
    PHASE 2: SLALOM - BASE STYLES
    ================================ */
 .section--slalom {
@@ -435,6 +705,57 @@ p {
     font-size: clamp(2rem, 6vw, 4rem);
 }
 
+.activation-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-top: var(--spacing-sm);
+}
+
+/* Text accent colors */
+.text-pink {
+    color: #E91E63;
+}
+
+/* Noholita Section */
+.section--noholita {
+    background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+.activation-content--reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.activation-content--reverse .tweet-wall {
+    order: 2;
+}
+
+.activation-content--reverse .iphone-mockup {
+    order: 1;
+}
+
+/* iPhone frame pink variant */
+.iphone-frame--pink {
+    box-shadow: var(--shadow-soft), 0 0 0 3px #E91E63, 0 0 40px rgba(233, 30, 99, 0.2);
+}
+
+/* Video placeholder */
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.video-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
 .activation-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -452,13 +773,14 @@ p {
 }
 
 .iphone-frame {
-    width: 320px;
-    height: 650px;
+    width: 280px;
+    height: 580px;
     background: #000;
-    border-radius: 50px;
-    padding: 15px;
+    border-radius: 45px;
+    padding: 12px;
     box-shadow: var(--shadow-soft), 0 0 0 3px #333;
     position: relative;
+    overflow: hidden;
 }
 
 .iphone-notch {
@@ -476,34 +798,39 @@ p {
 .iphone-screen {
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    background: #000;
     border-radius: 40px;
-    padding: var(--spacing-md);
-    padding-top: 50px;
+    padding: 10px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 8px;
+    overflow: hidden;
+    position: relative;
 }
 
 .influencer-profile {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 8px;
+    padding: 0 5px;
+    flex-shrink: 0;
 }
 
 .profile-avatar {
-    width: 60px;
-    height: 60px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-accent) 0%, #d97800 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-align: center;
     font-family: var(--font-heading);
+    flex-shrink: 0;
 }
 
 .profile-info {
@@ -512,15 +839,33 @@ p {
 
 .profile-name {
     color: var(--color-light);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     text-transform: none;
+    font-weight: 600;
 }
 
 .profile-handle {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
+.video-container {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+}
+
+.tiktok-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #000;
+}
+
+/* Pour le placeholder si besoin */
 .video-thumbnail {
     flex: 1;
     background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
