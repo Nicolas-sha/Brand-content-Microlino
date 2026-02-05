@@ -313,40 +313,46 @@ const suvTimeline = gsap.timeline({
 });
 
 suvTimeline
-    // 1. Le SUV arrive de la gauche vers la Microlino
+    // 1. Le SUV arrive de la gauche (menaçant)
     .to(giantSuv, {
-        left: '38%',
-        duration: 2.5,
-        ease: "none"
-    })
-    // 2. La Microlino fait un BOND d'attaque vers le SUV ! 💥
-    .to(microlino, {
-        x: -80,           // Bond vers la gauche (vers le SUV)
-        y: -30,           // Petit saut en l'air
-        rotation: -5,     // Légère inclinaison agressive
-        scale: 1.1,       // Grossit un peu (effet de puissance)
-        duration: 0.3,
+        left: '35%',    // S'approche un peu plus près
+        duration: 2,
         ease: "power2.out"
     })
-    // 3. Le SUV s'envole sous l'impact ! 🚀
+    // 2. Anticipation : La Microlino se prépare (recule légèrement)
+    .to(microlino, {
+        x: 30,          // Recule vers la droite
+        rotation: 5,    // Se penche vers l'arrière
+        scale: 0.95,    // Se compresse (squash)
+        duration: 0.2,
+        ease: "power1.in"
+    })
+    // 3. IMPACT VIOLENT ! 💥 (Strike rapide)
+    .to(microlino, {
+        x: -120,        // Frappe loin vers la gauche
+        rotation: -10,  // Penche vers l'avant dans l'impact
+        scale: 1.15,    // Grossit (puissance)
+        duration: 0.1,  // Très rapide !
+        ease: "power4.out"
+    })
+    // 4. EJECTION DU SUV (Réaction immédiate et rapide)
     .to(giantSuv, {
-        left: '120%',
-        top: '-50%',
-        rotation: 900,    // Tourbillon violent
-        scale: 0.15,
+        left: '150%',
+        top: '-100%',     // Vole plus haut
+        rotation: 1200,   // Tourne plus vite
+        scale: 0.1,
         opacity: 0,
-        duration: 1.5,
-        ease: "power3.out"
-    }, "<")  // "<" = commence en même temps que l'animation précédente
-    // 4. La Microlino revient à sa position normale (satisfaite 😎)
+        duration: 0.8,    // Disparaît vite
+        ease: "power4.in" // Accélère vers la sortie
+    }, "<") // Synchro parfaite avec l'impact
+    // 5. La Microlino revient en mode "Boss" (rebond cool)
     .to(microlino, {
         x: 0,
-        y: 0,
         rotation: 0,
         scale: 1,
-        duration: 0.5,
-        ease: "back.out(1.5)"
-    }, "-=0.5");  // Commence un peu avant la fin
+        duration: 0.8,
+        ease: "elastic.out(1, 0.5)" // Rebond élastique "cool"
+    });
 
 
 // ================================
