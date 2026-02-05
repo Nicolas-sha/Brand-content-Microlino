@@ -1152,7 +1152,8 @@ p {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    background: #000;
+    background: #fff;
+    /* Fond blanc pour les slides */
     border-radius: 20px;
 }
 
@@ -1168,11 +1169,11 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    /* Affiche toute l'image sans couper */
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     pointer-events: none;
-    /* Empêche l'interaction directe avec l'image */
 }
 
 .carousel-slide.active {
@@ -1180,37 +1181,48 @@ p {
     pointer-events: auto;
 }
 
-/* Bouton Navigation */
-.carousel-btn {
+/* Boutons Navigation EXTERNES */
+.carousel-nav-btn {
     position: absolute;
-    right: 15px;
-    bottom: 50%;
-    /* Centré verticalement ou ajusté */
-    transform: translateY(50%);
-    width: 40px;
-    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: var(--color-pink);
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
+    z-index: 100;
+    /* Au-dessus de tout */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateY(50%) scale(1.1);
+.carousel-nav-btn:hover {
+    background: var(--color-pink);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.carousel-nav-btn.prev-btn {
+    left: -50px;
+    /* À gauche du téléphone */
+}
+
+.carousel-nav-btn.next-btn {
+    right: -50px;
+    /* À droite du téléphone */
 }
 
 /* Indicateurs (Dots) */
 .carousel-dots {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1222,12 +1234,14 @@ p {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    /* Plus foncé car fond blanc */
     transition: background 0.3s ease;
+    cursor: pointer;
 }
 
 .dot.active {
-    background: #fff;
+    background: var(--color-pink);
     transform: scale(1.2);
 }
 

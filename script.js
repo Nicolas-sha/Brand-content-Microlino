@@ -513,7 +513,43 @@ document.querySelectorAll('.road-background').forEach(road => {
 });
 
 // ================================
-// DEBUG MODE (uncomment to enable)
+// NOHOLITA CAROUSEL LOGIC
+// ================================
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+    // Gestion de l'index cyclique
+    if (index >= slides.length) currentSlide = 0;
+    else if (index < 0) currentSlide = slides.length - 1;
+    else currentSlide = index;
+
+    // Mise à jour des classes active
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+// Fonction globale accessible via onclick HTML
+window.nextSlide = function () {
+    showSlide(currentSlide + 1);
+};
+
+window.prevSlide = function () {
+    showSlide(currentSlide - 1);
+};
+
+// Initialisation des dots pour qu'ils soient cliquables aussi
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showSlide(index);
+    });
+});
+
 // ================================
 // ScrollTrigger.defaults({ markers: true });
 

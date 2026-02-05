@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=16">
 </head>
 
 <body>
@@ -412,6 +412,14 @@
         <div class="activation-content">
             <!-- LEFT: iPhone Mockup Noholita -->
             <div class="iphone-mockup">
+                <!-- Bouton Précédent (Gauche) -->
+                <button class="carousel-nav-btn prev-btn" onclick="prevSlide()">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
                 <div class="iphone-frame iphone-frame--pink">
                     <div class="iphone-notch"></div>
                     <div class="iphone-screen">
@@ -426,28 +434,32 @@
                         </div>
                         <div class="carousel-container" id="noholita-carousel">
                             <div class="carousel-wrapper">
-                                <img src="assets/noholita_slide.jpg" class="carousel-slide active" alt="Slide 1">
-                                <img src="assets/noholita_slide_2.png" class="carousel-slide" alt="Slide 2">
-                                <img src="assets/noholita_slide_3.png" class="carousel-slide" alt="Slide 3">
+                                <img src="assets/noholita_slide_01.png" class="carousel-slide active" alt="Slide 1">
+                                <img src="assets/noholita_slide_02.png" class="carousel-slide" alt="Slide 2">
+                                <img src="assets/noholita_slide_03.png" class="carousel-slide" alt="Slide 3">
+                                <img src="assets/noholita_slide_04.png" class="carousel-slide" alt="Slide 4">
+                                <img src="assets/noholita_slide_05.png" class="carousel-slide" alt="Slide 5">
                             </div>
 
-                            <!-- Bouton Navigation -->
-                            <button class="carousel-btn next-btn" onclick="nextSlide()">
-                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-
-                            <!-- Indicateurs -->
+                            <!-- Les indicateurs restent DANS l'écran (sur l'image) -->
                             <div class="carousel-dots">
                                 <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
                                 <span class="dot"></span>
                                 <span class="dot"></span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Bouton Suivant (Droite) -->
+                <button class="carousel-nav-btn next-btn" onclick="nextSlide()">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
 
             <!-- RIGHT: Tweet Wall Noholita -->
@@ -569,7 +581,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=12"></script>
+    <script src="script.js?v=16"></script>
 </body>
 
 </html>
