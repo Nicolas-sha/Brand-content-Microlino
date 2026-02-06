@@ -976,12 +976,50 @@ p {
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     backdrop-filter: blur(var(--glass-blur));
-    transition: var(--transition-smooth);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.tweet-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.tweet-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.tweet-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.tweet-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.tweet-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.tweet-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .tweet-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-soft);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .tweet-header {
@@ -1210,12 +1248,12 @@ p {
 }
 
 .carousel-nav-btn.prev-btn {
-    left: -50px;
+    left: -30px;
     /* À gauche du téléphone */
 }
 
 .carousel-nav-btn.next-btn {
-    right: -50px;
+    right: -30px;
     /* À droite du téléphone */
 }
 
