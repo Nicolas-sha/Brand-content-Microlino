@@ -92,14 +92,16 @@ transitionTimeline
 // CONTEXT STRATÉGIQUE ANIMATIONS
 // ================================
 
+// CONTEXT ANIMATIONS DISABLED TO FORCE VISIBILITY
+/* 
 // Title animation
 gsap.from('.section--context .section-title', {
     y: 50,
     opacity: 0,
     scrollTrigger: {
         trigger: '#context',
-        start: "top 80%",
-        end: "top 50%",
+        start: "top 90%",
+        end: "top 60%",
         scrub: 1,
     }
 });
@@ -111,11 +113,12 @@ gsap.from('.context-card', {
     stagger: 0.2,
     scrollTrigger: {
         trigger: '.context-grid',
-        start: "top 80%",
-        end: "top 40%",
+        start: "top 85%",
+        end: "center 60%",
         scrub: 1,
     }
 });
+*/
 
 // ================================
 // MISSION & VISION ANIMATIONS
@@ -555,3 +558,32 @@ dots.forEach((dot, index) => {
 
 console.log('🚗 Microlino Scrollytelling - Loaded!');
 console.log('📍 Scroll to experience the Urban Joyride');
+
+// ================================
+// SCRIPT MODAL LOGIC
+// ================================
+
+window.openScript = function () {
+    const modal = document.getElementById('scriptModal');
+    if (modal) modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeScript = function () {
+    const modal = document.getElementById('scriptModal');
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+};
+
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('scriptModal');
+    if (e.target === modal) {
+        window.closeScript();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        window.closeScript();
+    }
+});
