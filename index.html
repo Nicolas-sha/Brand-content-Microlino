@@ -34,11 +34,35 @@
     <!-- ================================
          PHASE 1 : L'INTRO (LE HOOK)
          ================================ -->
-    <section class="section section--intro" id="intro">
-        <div class="intro-content">
-            <img src="assets/img/microlino-orange-side.webp" alt="Microlino Orange" class="trottinette"
-                id="trottinette">
-            <h1 class="intro-text">Tout a commencé<br><span class="text-accent">par un rêve...</span></h1>
+    <!-- PHASE 1: L'ORIGINE DU MOUVEMENT (Intro Choc) -->
+    <section id="intro" class="section section--intro">
+        <div class="intro-pinned-container">
+
+            <!-- SCOOTER (Blurry start) -->
+            <div class="scooter-wrapper">
+                <img src="assets/img/scooter.png" alt="Trottinette Électrique" class="scooter-img">
+                <div class="blur-overlay"></div>
+            </div>
+
+            <!-- INVENTOR CARD (Revealed on scroll) -->
+            <div class="inventor-card">
+                <div class="inventor-visual">
+                    <!-- Updated with user provided image -->
+                    <img src="assets/img/wim_ouboter_freigestellt.webp" alt="Wim Ouboter" class="inventor-photo">
+                </div>
+                <div class="inventor-info">
+                    <span class="inventor-label">Le Visionnaire</span>
+                    <h2 class="inventor-name">Wim Ouboter</h2>
+                    <p class="inventor-desc">Après avoir conquis le monde sur deux roues, il fait un pari fou : rétrécir
+                        la voiture pour agrandir la vie urbaine.</p>
+                </div>
+            </div>
+
+            <!-- CONNECTION TEXT -->
+            <div class="connection-container">
+                <h2 class="connection-title">MAINTENANT,<br>IL RÉINVENTE LA VOITURE.</h2>
+            </div>
+            <!-- Scroll indicator removed as requested -->
         </div>
     </section>
 
@@ -447,6 +471,8 @@
                 </div>
             </div>
 
+            <!-- PHASE 1: L'ORIGINE DU MOUVEMENT (Intro Choc) -->
+
             <!-- RIGHT: Tweet Wall avec design amélioré -->
             <div class="tweet-wall">
                 <div class="tweet-marquee">
@@ -791,8 +817,8 @@
             <!-- HERO Card -->
             <div class="matrix-card matrix-card--hero">
                 <div class="matrix-icon">🏆</div>
-                <div class="matrix-label">HERO</div>
-                <h3 class="matrix-title">Lancement Viral</h3>
+                <div class="matrix-label">L'ÉVÉNEMENT</div>
+                <h3 class="matrix-title">Le Big Bang</h3>
                 <p class="matrix-hashtag">#MicroFlex</p>
                 <p class="matrix-description">Challenge "Cross-Parking" : Montrez votre stationnement impossible</p>
                 <div class="matrix-frequency">Événement unique</div>
@@ -801,19 +827,19 @@
             <!-- HUB Card -->
             <div class="matrix-card matrix-card--hub">
                 <div class="matrix-icon">📅</div>
-                <div class="matrix-label">HUB</div>
-                <h3 class="matrix-title">Le RDV Bimensuel</h3>
+                <div class="matrix-label">TEMPS FORTS</div>
+                <h3 class="matrix-title">Les Rendez-Vous</h3>
                 <p class="matrix-hashtag">Créateurs</p>
-                <p class="matrix-description">Tests Léo Duff & Vlogs Noholita à 2 semaines d'intervalle</p>
-                <div class="matrix-frequency">2x / mois</div>
+                <p class="matrix-description">Tests Léo Duff & Vlogs Noholita à 2 jours d'intervalle</p>
+                <div class="matrix-frequency">2x / semaine</div>
             </div>
 
             <!-- HYGIENE Card -->
             <div class="matrix-card matrix-card--hygiene">
-                <div class="matrix-icon">🔄</div>
-                <div class="matrix-label">HYGIENE</div>
+                <div class="matrix-icon">💬</div>
+                <div class="matrix-label">CONVERSATION</div>
                 <h3 class="matrix-title">Le Quotidien</h3>
-                <p class="matrix-hashtag">Community</p>
+                <p class="matrix-hashtag">Communauté</p>
                 <p class="matrix-description">Tutos Parking • Stories Repost • Réponses en commentaires</p>
                 <div class="matrix-frequency">Quotidien</div>
             </div>
@@ -833,7 +859,7 @@
                 <div class="timeline-road"></div>
 
                 <div class="timeline-checkpoint checkpoint--s1">
-                    <div class="checkpoint-marker">S1</div>
+                    <div class="checkpoint-marker">J-2</div>
                     <div class="checkpoint-content">
                         <div class="checkpoint-icon">🔑</div>
                         <h4>Teasing</h4>
@@ -842,29 +868,29 @@
                 </div>
 
                 <div class="timeline-checkpoint checkpoint--s2">
-                    <div class="checkpoint-marker">S2</div>
+                    <div class="checkpoint-marker">JOUR J</div>
                     <div class="checkpoint-content">
                         <div class="checkpoint-icon">🎬</div>
-                        <h4>Léo Duff</h4>
-                        <p>Vidéo Choc #MicroFlex</p>
+                        <h4>Lancement</h4>
+                        <p>Vidéo Choc Léo Duff</p>
                     </div>
                 </div>
 
                 <div class="timeline-checkpoint checkpoint--s3">
-                    <div class="checkpoint-marker">S3</div>
+                    <div class="checkpoint-marker">J+2</div>
                     <div class="checkpoint-content">
                         <div class="checkpoint-icon">👜</div>
-                        <h4>Noholita</h4>
-                        <p>Lifestyle #MicroFlex</p>
+                        <h4>Lifestyle</h4>
+                        <p>Vlog Mode Noholita</p>
                     </div>
                 </div>
 
                 <div class="timeline-checkpoint checkpoint--s4">
-                    <div class="checkpoint-marker">S4</div>
+                    <div class="checkpoint-marker">J+5</div>
                     <div class="checkpoint-content">
                         <div class="checkpoint-icon">🏆</div>
-                        <h4>Challenge</h4>
-                        <p>UGC Viral Cross-Parking</p>
+                        <h4>Viralisation</h4>
+                        <p>Challenge Cross-Parking</p>
                     </div>
                 </div>
             </div>
@@ -905,7 +931,7 @@
                 </div>
 
                 <div class="ticket-footer">
-                    <span>Campagne 4 semaines</span>
+                    <span>Campagne Flash (1 semaine)</span>
                     <span>ROI Estimé: 3.5x</span>
                 </div>
             </div>

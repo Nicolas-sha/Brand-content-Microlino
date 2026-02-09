@@ -40,31 +40,57 @@ const accelerationSection = document.getElementById('acceleration');
 const activationSection = document.getElementById('activation');
 
 // ================================
-// PHASE 1: INTRO - LE HOOK
-// Trottinette → Microlino transition
+// PHASE 1: INTRO "CHOC"
+// Scooter Unblur -> Inventor -> Microlino
 // ================================
 
-// Initial state: Microlino hidden
-gsap.set(microlino, { opacity: 0 });
+const scooterImg = document.querySelector('.scooter-img');
+const inventorCard = document.querySelector('.inventor-card');
+const connectionContainer = document.querySelector('.connection-container');
+
+// Initial states
+gsap.set(microlino, { opacity: 0 }); // Microlino hidden initially
+gsap.set(inventorCard, { opacity: 0, y: 100 });
+gsap.set(connectionContainer, { opacity: 0 });
 
 // Timeline for intro section
-const introTimeline = gsap.timeline({
+const shockIntroTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: introSection,
         start: "top top",
-        end: "bottom top",
+        end: "+=2000", // Pin for 2000px of scroll
         scrub: 1,
-        pin: false,
+        pin: true, // FORCE PINNING so it doesn't move
+        anticipatePin: 1,
     }
 });
 
-// Trottinette grows and fades out
-introTimeline
-    .to(trottinette, {
-        scale: 2.5,
+shockIntroTimeline
+    // 1. Unblur Scooter (0% -> 40% of scroll) - Reste sur place
+    .to(scooterImg, {
+        filter: "blur(0px)",
+        duration: 4,
+        ease: "power1.out"
+    })
+    // 2. Inventor Slide Up (30% -> 60%) - Le scooter ne bouge pas
+    .to(inventorCard, {
+        opacity: 1,
+        y: -50, // Remonte légèrement pour être bien visible
+        duration: 3,
+        ease: "power2.out"
+    }, "-=2") // Commence pendant le défloutage
+    // 3. Reveal Connection Text (60% -> 80%)
+    .to(connectionContainer, {
+        opacity: 1,
+        backdropFilter: "blur(10px)",
+        duration: 2,
+        ease: "power2.in"
+    })
+    // 4. Fade Out All at the very end (90% -> 100%)
+    .to([scooterImg, inventorCard, connectionContainer], {
         opacity: 0,
         duration: 1,
-        ease: "power2.inOut"
+        ease: "power2.in"
     });
 
 // ================================
