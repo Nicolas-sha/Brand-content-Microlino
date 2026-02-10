@@ -612,8 +612,8 @@ p {
     justify-content: center;
     align-items: center;
     padding: var(--spacing-lg) var(--spacing-md);
-    padding-top: calc(var(--spacing-xl) * 2);
-    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    /* margin-top: var(--spacing-xl); Removed to fix white space */
     gap: var(--spacing-md);
     position: relative;
     z-index: 60;
@@ -2407,15 +2407,18 @@ p {
 }
 
 .script-table th {
-    background: rgba(255, 165, 0, 0.1);
-    /* Slight orange tint */
+    background: #141419;
+    /* Opaque dark background to hide scrolling text */
     color: var(--color-accent);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    position: sticky;
-    top: 0;
+    position: relative;
+    /* Changed from sticky to relative as requested */
+    /* top: 0; Removed top: 0 */
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .script-table tr:hover td {
